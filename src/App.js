@@ -14,6 +14,7 @@ function App() {
         <a><SignUp/></a>   
       </div>
       <Footer/>
+      
     </div>
   );
 }

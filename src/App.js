@@ -1,21 +1,28 @@
 
-import Header from "./Header"
-import SignUp from "./SignUp"
+import Header from "./Header";
+import SignUp from "./SignUp";
+import Login from "./LogIn";
+import Footer from "./Footer";
 import { useState, useEffect } from "react";
+import { AuthProvider } from "./context/AuthContext";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css' ;
 
 function App() {
+
+
   return (
-    <div className="App">
-      <Header title="ログイン画面"/>
-      <LogIn/>
-      <GoogleLogIn/>
-      <div style={{margin: '2em'}}> 
-        <a><SignUp/></a>   
-      </div>
-      <Footer/>
-      
-    </div>
+      <AuthProvider>
+        <div style={{margin: '2em'}}> 
+          <BrowserRouter>
+            <Routes>
+              <Route path = "/" element= {<Header/>}/>
+              <Route path = "/SignUp" element= {<SignUp/>}/>
+              <Route path = "/Login" element = {<Login/>}/>
+            </Routes>   
+          </BrowserRouter>
+        </div>
+      </AuthProvider>
   );
 }
 

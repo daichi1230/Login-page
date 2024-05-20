@@ -1,36 +1,41 @@
 import { useState } from 'react';
+import { auth } from './Firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useAuthContext } from './context/AuthContext';
+
 const SignUp =() => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const { user } = useAuthContext();
     const handleSubmit = (e) => {
-        event.preventDefault();
-        console.log(email, password);
+        e.preventDefault();
+        createUserWithEmailAndPassword(auth, email, password);
     };
     const handleChangeEmail = (e) => {
-        setEmail(event.currentTarget.value);
+        setEmail(e.currentTarget.value);
     };
     const handleChangePassword = (e) => {
-        setPassword(event.currentTarget.value);
+        setPassword(e.currentTarget.value);
     };
 
     return (
         <div>
-            <h1>ユーザー登録</h1>
+            <h1>ユーザー登録{user.email}</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="">メールアドレス</label>
+                    <label htmlFor="email">メールアドレス</label>
                     <input  type="email"
                             name='email'
                             placeholder='email'
-                            onChange={(event) => handleChangeEmail(event)} 
+                            onChange={(e) => handleChangeEmail(e)} 
                     />
                 </div>
                 <div>
-                    <label htmlFor="">パスワード</label>
+                    <label htmlFor="password">パスワード</label>
                     <input  type="password"
                             name='password'
                             placeholder='password'
-                            onChange={(event) => handleChangePassword(event)}
+                            onChange={(e) => handleChangePassword(e)}
                     />
                 </div>
                 <div>

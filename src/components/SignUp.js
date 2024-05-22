@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { auth } from './Firebase';
+import { auth } from '../Firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 
 const SignUp =() => {

@@ -1,7 +1,7 @@
-import { auth } from './Firebase';
+import { auth } from '../Firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 
 
 const Home = () => {

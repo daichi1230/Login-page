@@ -1,15 +1,15 @@
 
-import Header from "./Header";
-import Home from "./Home";
-import SignUp from "./SignUp";
-import Login from "./LogIn";
-import Footer from "./Footer";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import SignUp from "./components/SignUp";
+import Login from "./components/LogIn";
+import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './Route/PrivateRoute';
 import './index.css' ;
-import PublicRoute from "./components/PrivateRoute";
+import PublicRoute from "./Route/PublicRoute";
 
 function App() {
 

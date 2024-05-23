@@ -10,9 +10,14 @@ const SignUp =() => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const { user } = useAuthContext();
+    //input要素に入力した値を取得してFirebaseに送信する
+    //React HookのuseStateを利用して、input要素に入力した値を変数に保存してhandleSubmit実行時に保存した値を取得する
     const handleSubmit = (e) => {
         e.preventDefault();
+        //firebaseにユーザを登録する処理
+        //メソッドの引数には、authオブジェクトとemail、passwordを渡す
         createUserWithEmailAndPassword(auth, email, password).then(() => {
+    //登録が成功したらホームページに遷移する
             navigate('/');
         }).catch((error) => {
             console.log(error.code);

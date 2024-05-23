@@ -16,21 +16,24 @@ export function AuthProvider({ children }) {
         user,
         loading,
     };
-
+//useEffectを利用して、マウント時にonAuthStateChangedメソッドを実行してユーザーの認証状態を取得する
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
-            console.log(user);
             setUser(user);
         });
         return () => unsubscribe();
     }, []);
-
-
-    if (loading) {
-        return <p> loading...</p>;
-    } else {
-    return ( <AuthContext.Provider value={value}>
-                {children}
-            </AuthContext.Provider> );
-    }
 }
+//[]はuseEffectの中の処理をAuthContext.jsのマウント時に一度だけ実行するために指定している
+//アンマウント時はリスナーとして監視が必要なくなるため、unsubscribe()を実行している
+
+
+//下記のコードはHomeコンポーネント以外にもアクセス制限をかけるときには分岐の処理を毎回記述する必要があり、非効率である
+//そのため、PrivateRoute.jsを作成して、アクセス制限をかけるコンポーネントをラップすることで、コードの重複を防ぐ
+//     if (loading) {
+//         return <p> loading...</p>;
+//     } else {
+//     return ( <AuthContext.Provider value={value}>
+//                 {children}
+//             </AuthContext.Provider> );
+//     }

@@ -6,10 +6,11 @@ import { useState } from 'react';
 const Login = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
+    //ログインフォームに入力された値を取得してFirebaseに送信する
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { email, password} = e.target.elements;
-
+    //ログインが成功したらホームページに遷移する
         signInWithEmailAndPassword(auth, email, password).then(() => {
             navigate('/');
         }).catch((error) => {
@@ -44,6 +45,7 @@ const Login = () => {
                 <div>
                     <label htmlFor="password">パスワード</label>
                     <input type="password" name="password" placeholder="password" id="password" />
+                    //Linkコンポーネントを使ってパスワードを忘れた場合のリンクを設定
                     <Link to={'/ChangePassword'} style={{ color: '#0ff' }}>パスワードをお忘れですか？</Link>
                 </div>
                 <div>

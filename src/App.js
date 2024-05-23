@@ -4,12 +4,12 @@ import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/LogIn";
 import Footer from "./components/Footer";
-import { useState, useEffect } from "react";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './Route/PrivateRoute';
 import './index.css' ;
 import PublicRoute from "./Route/PublicRoute";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
 
@@ -25,7 +25,9 @@ function App() {
               <Route element= {<PublicRoute/>}>
                 <Route path = "/signup" element= {<SignUp/>}/>
                 <Route path = "/login" element= {<Login/>}/>
+                <Route path = "/reset-password" element= {<ResetPassword/>}/>
               </Route>
+              <Route path = "/footer" element= {<Footer/>}/>
             </Routes>   
           </BrowserRouter>
         </div>
